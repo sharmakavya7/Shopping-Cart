@@ -15,6 +15,11 @@ class CartItem extends React.Component {
             qty: 1,
             img: ''
         }
+        // this.increaseQuant = this.increaseQuant.bind(this);
+    }
+    // arraow fucntion auto binds values of this to instance class
+    increaseQuant = () => {
+        console.log('this.state', this.state);
     }
     render () {
         const{ price, title, qty} = this.state;
@@ -30,11 +35,24 @@ class CartItem extends React.Component {
                 <div className="cart-item-actions">
                     {/* buttons */}
                     {/* increase quant */}
-                    <img alt="increase" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/992/992651.png"/> 
+                    <img 
+                        alt="increase" 
+                        className="action-icons" 
+                        src="https://cdn-icons-png.flaticon.com/512/992/992651.png"
+                        onClick={this.increaseQuant}
+                    /> 
                     {/* decrease quant */}
-                    <img alt="decrease" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/992/992683.png"/>  
+                    <img 
+                        alt="decrease" 
+                        className="action-icons" 
+                        src="https://cdn-icons-png.flaticon.com/512/992/992683.png"
+                        />  
                     {/* delete prod */}
-                    <img alt="delete" className="action-icons" src="https://cdn-icons.flaticon.com/png/512/3395/premium/3395538.png?token=exp=1659395282~hmac=f81694e11e7f55eee260b07c41ac3ed6"/> 
+                    <img 
+                        alt="delete" 
+                        className="action-icons" 
+                        src="https://cdn-icons.flaticon.com/png/512/3395/premium/3395538.png?token=exp=1659395282~hmac=f81694e11e7f55eee260b07c41ac3ed6"
+                        /> 
                 </div>
             </div>
         </div>
