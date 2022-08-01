@@ -7,18 +7,34 @@ import React from 'react';
 
 // in JSX, we use curly braces{} to write JS code inside that.
 class CartItem extends React.Component {
+    constructor() {
+        super();  // call the constructor of the parent class
+        this.state = {
+            price:999,
+            title: 'Mobile Phone',
+            qty: 1,
+            img: ''
+        }
+    }
     render () {
+        const{ price, title, qty} = this.state;
         return ( // write some JSX code
         <div className="cart-item">
             <div className="left-block"> 
                 <img style={styles.image} alt="here's an pic" />
             </div>
             <div className="right-block">
-                <div style={{fostSize:25}}>Phone</div>
-                <div style={{color:'#777'}}>RS. 999</div>
-                <div style={{color:'#777'}}>Qty:1</div>
+                <div style={{fostSize:25}}>{title}</div>
+                <div style={{color:'#777'}}>Rs. {price}</div>
+                <div style={{color:'#777'}}>Qty:{qty}</div>
                 <div className="cart-item-actions">
                     {/* buttons */}
+                    {/* increase quant */}
+                    <img alt="increase" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/992/992651.png"/> 
+                    {/* decrease quant */}
+                    <img alt="decrease" className="action-icons" src="https://cdn-icons-png.flaticon.com/512/992/992683.png"/>  
+                    {/* delete prod */}
+                    <img alt="delete" className="action-icons" src="https://cdn-icons.flaticon.com/png/512/3395/premium/3395538.png?token=exp=1659395282~hmac=f81694e11e7f55eee260b07c41ac3ed6"/> 
                 </div>
             </div>
         </div>
@@ -40,3 +56,6 @@ const styles = {
 
 
 export default CartItem;
+
+// STATE:
+// Way to store local data for that component, it can have properites
