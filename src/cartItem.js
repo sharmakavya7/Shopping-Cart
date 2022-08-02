@@ -16,7 +16,30 @@ class CartItem extends React.Component {
             img: ''
         }
         // this.increaseQuant = this.increaseQuant.bind(this);
+        this.testing();
     }
+    testing () {
+        const promise = new Promise((resolve, reject) =>{
+            setTimeout(() => {
+                resolve('done');
+            }, 5000);
+        })
+
+        promise.then( ()=> {
+            // setState acts like a synchronus call
+            this.setState({qty:this.state.qty + 10});
+            // this.state.qty = 1 and + 10 = 1+10 = 11
+
+            this.setState({qty:this.state.qty + 10});
+            // this.state.qty = 11 + 10 = 21
+
+            this.setState({qty:this.state.qty + 10});
+            // this.state.qty = 21 + 10 = 31
+            
+            
+            console.log('state', this.state);
+        })
+    } 
     // arraow fucntion auto binds values of this to instance class
     increaseQuant = () => {
         // this.state.qty+=1;
@@ -34,6 +57,12 @@ class CartItem extends React.Component {
         });
     }
     decreaseQuant = () => {
+        //if qty = 0, we dont need to use this function
+        const { qty } = this.state;
+
+        if(qty === 0) {
+            return;
+        }
         this.setState((prevState) => {
             return {
                 qty: prevState.qty-1
